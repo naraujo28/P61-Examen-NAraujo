@@ -1,3 +1,5 @@
+/*Nubia Araujo
+ * 1752006187*/
 #include "juego.h"
 
 #include <QApplication>

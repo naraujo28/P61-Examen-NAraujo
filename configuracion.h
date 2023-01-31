@@ -25,10 +25,13 @@ public:
 private slots:
     void on_btnColor_released();
 
+    void on_inDimension_sliderReleased();
+
 private:
     Ui::Configuracion *ui;
     QColor m_color;
     int m_dimension;
+    int m_width;
 
     void setWidgetColor();
 };

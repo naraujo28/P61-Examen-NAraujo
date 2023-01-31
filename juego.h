@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QImage>
 #include <QPaintEvent>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Juego; }
@@ -41,6 +42,8 @@ private:
     Circulo *m_circulo;
     QImage *m_imagen;
     QPainter *m_painter;
+    QColor m_color;
+    int m_width;
 
     void dibujar();
 };

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>iconos/cerrar-sesion.png</file>
+        <file>iconos/configuracion.png</file>
+        <file>iconos/control-de-juego.png</file>
+    </qresource>
+</RCC>

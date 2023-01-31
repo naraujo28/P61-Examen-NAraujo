@@ -11,7 +11,8 @@ Juego::Juego(QWidget *parent)
     m_imagen->fill(Qt::white);
     m_painter = new QPainter(m_imagen);
     m_painter->setRenderHint(QPainter::Antialiasing);
-
+    m_color = Qt::black;
+    m_width = 3;
     this->dibujar();
 }
 
@@ -32,25 +33,53 @@ void Juego::paintEvent(QPaintEvent *event)
 
 void Juego::on_btnArriba_released()
 {
-
+    m_imagen->fill(Qt::white);
+    m_circulo->setPuntoy(m_circulo->puntoy()-1);
+    if(m_circulo->puntoy() >= 33){
+         dibujar();
+    }else{
+        QMessageBox::information(this, "Aviso", "Circulo fuera del limite");
+        return;
+    }
 }
 
 
 void Juego::on_btnAbajo_released()
 {
-
+    m_imagen->fill(Qt::white);
+    m_circulo->setPuntoy(m_circulo->puntoy()+1);
+    if(m_circulo->puntoy() <= 350){
+        dibujar();
+    }else{
+        QMessageBox::information(this, "Aviso", "Circulo fuera del limite");
+        return;
+    }
 }
 
 
 void Juego::on_btnIzqueirda_released()
 {
-
+    m_imagen->fill(Qt::white);
+    m_circulo->setPuntox(m_circulo->puntox()-1);
+    if(m_circulo->puntox() >= 12){
+         dibujar();
+    }else{
+        QMessageBox::information(this, "Aviso", "Circulo fuera del limite");
+        return;
+    }
 }
 
 
 void Juego::on_btnDerecha_released()
 {
-
+    m_imagen->fill(Qt::white);
+    m_circulo->setPuntox(m_circulo->puntox()+1);
+    if(m_circulo->puntox() <= 400){
+         dibujar();
+    }else{
+        QMessageBox::information(this, "Aviso", "Circulo fuera del limite");
+        return;
+    }
 }
 
 
@@ -61,7 +90,10 @@ void Juego::on_actionConfigraci0n_triggered()
     if (respuesta){
         qDebug() << config->color().name();
         qDebug() << config->dimension();
+        m_color = config->color().name();
+        m_width = config->dimension();
     }
+    dibujar();
 }
 
 
@@ -73,8 +105,8 @@ void Juego::on_actionSalir_triggered()
 void Juego::dibujar()
 {
     QPen pincel;
-    pincel.setWidth(5);
-    pincel.setColor(Qt::black);
+    pincel.setWidth(m_width);
+    pincel.setColor(m_color);
     pincel.setJoinStyle(Qt::MiterJoin);
 
     m_painter->setPen(pincel);

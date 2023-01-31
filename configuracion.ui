@@ -19,9 +19,15 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(205, 171, 143);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 190, 111);</string>
+     </property>
      <property name="title">
       <string>Color</string>
      </property>
@@ -57,6 +63,9 @@
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox_2">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 190, 111);</string>
+     </property>
      <property name="title">
       <string>Dimensión</string>
      </property>

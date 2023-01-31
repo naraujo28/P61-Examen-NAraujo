@@ -6,15 +6,27 @@ Juego::Juego(QWidget *parent)
     , ui(new Ui::Juego)
 {
     ui->setupUi(this);
-    QPoint centro = ui->marco->geometry().center();
-    m_circulo = new Circulo();
-    m_circulo->setX(centro.x());
-    m_circulo->setY(centro.y());
+    m_circulo = new Circulo;
+    m_imagen = new QImage(this->size(),QImage::Format_ARGB32_Premultiplied);
+    m_imagen->fill(Qt::white);
+    m_painter = new QPainter(m_imagen);
+    m_painter->setRenderHint(QPainter::Antialiasing);
+
+    this->dibujar();
 }
 
 Juego::~Juego()
 {
     delete ui;
+}
+
+void Juego::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    //Dibujar la imagen
+    painter.drawImage(0,0,*m_imagen);
+    //Aceptar el evento
+    event->accept();
 }
 
 
@@ -56,5 +68,17 @@ void Juego::on_actionConfigraci0n_triggered()
 void Juego::on_actionSalir_triggered()
 {
     this->close();
+}
+
+void Juego::dibujar()
+{
+    QPen pincel;
+    pincel.setWidth(5);
+    pincel.setColor(Qt::black);
+    pincel.setJoinStyle(Qt::MiterJoin);
+
+    m_painter->setPen(pincel);
+    m_painter->drawEllipse(m_circulo->puntox(), m_circulo->puntoy(), m_circulo->tamaño(), m_circulo->tamaño());
+    update();
 }
 

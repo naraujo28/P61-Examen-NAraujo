@@ -5,6 +5,9 @@
 #include <QDebug>
 #include "configuracion.h"
 #include "circulo.h"
+#include <QPainter>
+#include <QImage>
+#include <QPaintEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Juego; }
@@ -17,6 +20,8 @@ class Juego : public QMainWindow
 public:
     Juego(QWidget *parent = nullptr);
     ~Juego();
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
 private slots:
     void on_btnArriba_released();
@@ -34,5 +39,9 @@ private slots:
 private:
     Ui::Juego *ui;
     Circulo *m_circulo;
+    QImage *m_imagen;
+    QPainter *m_painter;
+
+    void dibujar();
 };
 #endif // JUEGO_H
